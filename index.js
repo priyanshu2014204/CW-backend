@@ -2,8 +2,11 @@ const express=require("express");
 const app=express();
 const {connection}=require("./config/db.js");
 const {Flightsche}=require("./model/flight.js");
+const cors=require("cors")
 app.use(express.json())
-
+app.use(cors({
+    origin:"*"
+}))
 app.get("/",async(req,res)=>{
     const data=await Flightsche.find();
     // let a=req.body
